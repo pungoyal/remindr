@@ -36,7 +36,15 @@ module Remindr
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
-    # Configure sensitive parameters which will be filtered from the log file.
+      # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    config.generators do |g|
+      g.template_engine :haml
+      g.test_framework :rspec
+
+      # you can also specify a different test framework or ORM here
+      # g.orm             :mongoid
+    end
   end
 end
