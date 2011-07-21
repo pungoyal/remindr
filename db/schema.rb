@@ -10,10 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110716071555) do
+ActiveRecord::Schema.define(:version => 1) do
 
   create_table "reminders", :force => true do |t|
-    t.string   "content"
+    t.text     "content"
     t.string   "twitter_handle"
     t.datetime "when"
     t.boolean  "dm"
