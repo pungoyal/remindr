@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 1) do
+ActiveRecord::Schema.define(:version => 2) do
 
   create_table "reminders", :force => true do |t|
     t.text     "content"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "when"
     t.boolean  "dm",             :default => false
     t.boolean  "done",           :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "fb_handle"
+    t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

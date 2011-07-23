@@ -31,17 +31,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(:country => params[:fb_sig_country])
+    redirect_to "https://www.facebook.com/dialog/oauth?client_id=2433943802&redirect_uri=remmbr.heroku.com&scope=email,read_stream"
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        format.xml { render :xml => @user, :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
-    end
+    #@user = User.new(:country => params[:fb_sig_country])
+    #
+    #respond_to do |format|
+    #  if @user.save
+    #    format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+    #    format.xml { render :xml => @user, :status => :created, :location => @user }
+    #  else
+    #    format.html { render :action => "new" }
+    #    format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
+    #  end
+    #end
   end
 
     # PUT /users/1
