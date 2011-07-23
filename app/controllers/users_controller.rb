@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    redirect_to "https://www.facebook.com/dialog/oauth?client_id=2433943802&redirect_uri=remmbr.heroku.com&scope=email,read_stream"
+    redirect_to "https://www.facebook.com/dialog/oauth?client_id=2433943802&redirect_uri=https://remmbr.heroku.com/canvas&scope=email,read_stream"
 
     #@user = User.new(:country => params[:fb_sig_country])
     #
