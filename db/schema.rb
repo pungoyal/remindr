@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(:version => 1) do
     t.text     "content"
     t.string   "twitter_handle"
     t.datetime "when"
-    t.boolean  "dm"
+    t.boolean  "dm",             :default => false
+    t.boolean  "done",           :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

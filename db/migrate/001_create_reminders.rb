@@ -4,7 +4,8 @@ class CreateReminders < ActiveRecord::Migration
       t.text :content
       t.string :twitter_handle
       t.datetime :when
-      t.boolean :dm
+      t.boolean :dm, :default => false
+      t.boolean :done, :default => false
 
       t.timestamps
     end
