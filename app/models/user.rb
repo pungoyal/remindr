@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 
   def apply_auth(auth)
     self.email = auth['user_info']['email'] if email.blank?
-    authentications.build(:provider => auth['provider'], :uid => auth['uid'])
+    authentications.build(
+        :provider => auth['provider'], :uid => auth['uid'], :nickname => auth['user_info']['nickname'],
+        :token => auth['credentials']['token'], :image => auth['user_info']['image'])
   end
 
   def password_required?

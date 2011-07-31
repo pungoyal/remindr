@@ -3,15 +3,20 @@ class AuthenticationsController < ApplicationController
     @authentications = current_user.authentications if current_user
   end
 
+  def create_
+    render :text => request.env["omniauth.auth"].to_yaml
+  end
+
   def create
-    #render :text => request.env["omniauth.auth"].to_yaml
     auth = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(auth['provider'], auth['uid'])
     if authentication
       flash[:notice] = "Signed in successfully!"
       sign_in_and_redirect :user, authentication.user
     elsif current_user
-      current_user.authentications.create(:provider => auth['provider'], :uid => auth['uid'])
+      current_user.authentications.create(
+          :provider => auth['provider'], :uid => auth['uid'], :nickname => auth['user_info']['nickname'],
+          :token => auth['credentials']['token'], :image => auth['user_info']['image'])
       flash[:notice] = "Authentication successful!"
       redirect_to authentications_url
     else
