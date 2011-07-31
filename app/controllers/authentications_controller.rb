@@ -15,7 +15,8 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Authentication successful!"
       redirect_to authentications_url
     else
-      user = User.new
+      user = User.find_by_email(auth['user_info']['email']) || User.new
+
       user.apply_auth auth
       if user.save
         flash[:notice] = "User registered!"
