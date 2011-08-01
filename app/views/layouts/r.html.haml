@@ -1,0 +1,18 @@
+%html
+  %head
+    %title
+      = [@name, @role, @email].join(@separator)
+    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'r.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'print.css', :media => 'print'
+    /[if lt IE 8]
+      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+    = csrf_meta_tag
+  %body
+    .content
+      .head
+        head
+      .body
+        body
+      .foot
+        foot

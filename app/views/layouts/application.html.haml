@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %title
+      = content_for?(:title) ? content_for(:title) : 'Remindr'
+    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'application.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'print.css', :media => 'print'
+    /[if lt IE 8]
+      = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+    = csrf_meta_tag
+  %body.bp
+    #container
+      .user_nav
+        - if user_signed_in?
+          Signed in as
+          = "#{current_user.email}."
+          = link_to "Not you?", destroy_user_session_path, :method => :delete
+        - else
+          = link_to "Sign up", new_user_registration_path
+          or
+          = link_to "Sign in", new_user_session_path
+      %p.notice
+        = notice
+      %p.alert
+        = alert
+      = yield
