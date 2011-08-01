@@ -3,11 +3,11 @@ class AuthenticationsController < ApplicationController
     @authentications = current_user.authentications if current_user
   end
 
-  def create
+  def create_
     render :text => request.env["omniauth.auth"].to_yaml
   end
 
-  def create_
+  def create
     auth = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(auth['provider'], auth['uid'])
     if authentication
