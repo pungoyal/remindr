@@ -7,6 +7,6 @@ class HomeController < ApplicationController
     @name = "Puneet Goyal"
     @role = "Agile Coach, Application Developer"
     @email = "email@puneetgoyal.net"
-    render :layout => 'r'
+    render :layout => 'blank'
   end
 end
